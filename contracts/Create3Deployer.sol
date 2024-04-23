@@ -2,19 +2,15 @@
 pragma solidity ^0.8.23;
 
 import { CREATE3 } from "solady/utils/CREATE3.sol";
+import { ICreate3Deployer } from "./ICreate3Deployer.sol";
 
-contract Create3Deployer {
-    /// @notice Deploys a contract using CREATE3
-    /// @param salt The salt to use for deployment
-    /// @param creationCode The contract creation code
-    /// @return deployed The address of the deployed contract
+contract Create3Deployer is ICreate3Deployer {
+    /// @inheritdoc	ICreate3Deployer
     function deploy(bytes32 salt, bytes calldata creationCode) external payable returns (address) {
         return CREATE3.deploy(salt, creationCode, msg.value);
     }
 
-    /// @notice Predicts the address of a deployed contract
-    /// @param salt The salt to use for deployment
-    /// @return deployed The address of the contract that will be deployed
+    /// @inheritdoc	ICreate3Deployer
     function getDeployed(bytes32 salt) external view returns (address) {
         return CREATE3.getDeployed(salt);
     }
