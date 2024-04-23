@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.23;
 
-import { CREATE3 } from "solady/utils/CREATE3.sol";
+import { CREATE3 } from "solady/src/utils/CREATE3.sol";
 import { ICreate3Deployer } from "./ICreate3Deployer.sol";
 
 contract Create3Deployer is ICreate3Deployer {
