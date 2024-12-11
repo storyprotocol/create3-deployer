@@ -7,11 +7,11 @@ import { ICreate3Deployer } from "./ICreate3Deployer.sol";
 contract Create3Deployer is ICreate3Deployer {
     /// @inheritdoc	ICreate3Deployer
     function deploy(bytes32 salt, bytes calldata creationCode) external payable returns (address) {
-        return CREATE3.deploy(salt, creationCode, msg.value);
+        return CREATE3.deployDeterministic(creationCode, salt);
     }
 
     /// @inheritdoc	ICreate3Deployer
     function getDeployed(bytes32 salt) external view returns (address) {
-        return CREATE3.getDeployed(salt);
+        return CREATE3.predictDeterministicAddress(salt);
     }
 }
